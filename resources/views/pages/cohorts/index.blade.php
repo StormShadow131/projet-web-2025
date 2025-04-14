@@ -32,6 +32,19 @@
                                 <td class="py-2">
                                     {{ $cohort->start_date }} - {{ $cohort->end_date }}
                                 </td>
+                                <td class="py-2 flex gap-2">
+                                    <a href="{{ route('cohort.edit', $cohort->id) }}"
+                                       class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                                        Modifier
+                                    </a>
+                                    <form action="{{ route('cohort.delete', $cohort->id) }}" method="POST" onsubmit="return confirm('Es-tu sûr de vouloir supprimer cette promotion ?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
