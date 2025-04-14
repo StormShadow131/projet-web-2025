@@ -14,8 +14,13 @@ class CohortController extends Controller
      * Display all available cohorts
      * @return Factory|View|Application|object
      */
-    public function index() {
-        return view('pages.cohorts.index');
+    public function index()
+    {
+        // Get all cohorts from database
+        $cohorts = Cohort::all();
+
+        // Send variable to view
+        return view('pages.cohorts.index', compact('cohorts'));
     }
 
 
