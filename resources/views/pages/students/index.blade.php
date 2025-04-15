@@ -44,7 +44,7 @@
                                        class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
                                         Modifier
                                     </a>
-                                    <form action="{{ route('student.delete', $student->id) }}" method="POST" onsubmit="return confirm('Es-tu sûr de vouloir supprimer cette promotion ?');">
+                                    <form action="{{ route('student.delete', $student->id) }}" method="POST" onsubmit="return confirm('Es-tu sûr de vouloir supprimer cet étudiants ?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
@@ -60,35 +60,33 @@
             </div>
         </div>
 
-                <!-- Form -->
-                <div class="lg:col-span-1">
-                    <div class="card h-full flex flex-col justify-between">
-                        <div>
-                            <div class="card-header p-4">
-                                <h3 class="card-title text-lg font-semibold">Ajouter une promotion</h3>
-                            </div>
-                            <div class="card-body p-4 flex flex-col gap-4">
-                                <form action="{{ route('student.store') }}" method="post" class="flex flex-col gap-4">
-                                    @csrf
+        <!-- Form -->
+        <div class="lg:col-span-1">
+            <div class="card h-full flex flex-col justify-between">
+                <div>
+                    <div class="card-header p-4">
+                        <h3 class="card-title text-lg font-semibold">Ajouter une promotion</h3>
+                    </div>
+                    <div class="card-body p-4 flex flex-col gap-4">
+                        <form action="{{ route('student.store') }}" method="post" class="flex flex-col gap-4">
+                            @csrf
 
-                                    <x-forms.input name="school_id" :label="__('School id')" />
-                                    <span class="text-gray-500 text-sm">(Cergy : 1 - Paris : 2)</span>
+                            <x-forms.input name="school_id" :label="__('School id')" />
+                            <span class="text-gray-500 text-sm">(Cergy : 1 - Paris : 2)</span>
 
-                                    <x-forms.input name="cohort" :label="__('Promotion')" />
-                                    <span class="text-gray-500 text-sm">(Ex : Cergy B1)</span>
+                            <x-forms.input name="cohort" :label="__('Promotion')" />
+                            <span class="text-gray-500 text-sm">(Ex : Cergy B1)</span>
 
-                                    <x-forms.input name="first_name" :label="__('Prenom')" />
-                                    <x-forms.input name="last_name" :label="__('Nom')" />
-                                    <x-forms.input name="email" :label="__('Email')" />
+                            <x-forms.input name="first_name" :label="__('Prenom')" />
+                            <x-forms.input name="last_name" :label="__('Nom')" />
+                            <x-forms.input name="email" :label="__('Email')" />
 
-                                    <x-forms.input type="date" name="birthday" :label="__('Date de naissance')" />
+                            <x-forms.input type="date" name="birthday" :label="__('Date de naissance')" />
 
-                                    <x-forms.primary-button>
-                                        {{ __('Valider') }}
-                                    </x-forms.primary-button>
-                                </form>
-                            </div>
-                        </div>
+                            <x-forms.primary-button>
+                                {{ __('Valider') }}
+                            </x-forms.primary-button>
+                        </form>
                     </div>
                 </div>
             </div>

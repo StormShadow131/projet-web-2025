@@ -31,7 +31,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
 
-        return view('pages.student.show', [
+        return view('pages.students.show', [
             'student' => $student
         ]);
     }
@@ -69,7 +69,7 @@ class StudentController extends Controller
         $student->update($request->all());
 
         // Redirect and print a success message
-        return redirect()->route('dashboard')->with('success', 'Étudiant modifiée avec succès !');
+        return redirect()->route('dashboard')->with('success', 'Étudiant modifié avec succès !');
     }
 
     // Delete student
@@ -79,7 +79,7 @@ class StudentController extends Controller
         $student->delete();
 
         // Redirect and print a success message
-        return redirect()->route('dashboard')->with('success', 'Étudiant supprimée avec succès !');
+        return redirect()->route('dashboard')->with('success', 'Étudiant supprimé avec succès !');
     }
 
 }
