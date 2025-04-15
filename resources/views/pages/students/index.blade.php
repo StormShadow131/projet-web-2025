@@ -8,107 +8,81 @@
     </x-slot>
 
     <!-- begin: grid -->
-    <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
-        <div class="lg:col-span-2">
-            <div class="grid">
-                <div class="card card-grid h-full min-w-full">
-                    <div class="card-header">
-                        <h3 class="card-title">Liste des étudiants</h3>
-                        <div class="input input-sm max-w-48">
-                            <i class="ki-filled ki-magnifier"></i>
-                            <input placeholder="Rechercher un étudiant" type="text"/>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div data-datatable="true" data-datatable-page-size="5">
-                            <div class="scrollable-x-auto">
-                                <table class="table table-border" data-datatable-table="true">
-                                    <thead>
-                                    <tr>
-                                        <th class="min-w-[135px]">
-                                            <span class="sort asc">
-                                                 <span class="sort-label">Nom</span>
-                                                 <span class="sort-icon"></span>
-                                            </span>
-                                        </th>
-                                        <th class="min-w-[135px]">
-                                            <span class="sort">
-                                                <span class="sort-label">Prénom</span>
-                                                <span class="sort-icon"></span>
-                                            </span>
-                                        </th>
-                                        <th class="min-w-[135px]">
-                                            <span class="sort">
-                                                <span class="sort-label">Date de naissance</span>
-                                                <span class="sort-icon"></span>
-                                            </span>
-                                        </th>
-                                        <th class="w-[70px]"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Doe</td>
-                                            <td>John</td>
-                                            <td>12/02/2000</td>
-                                            <td>
-                                                <div class="flex items-center justify-between">
-                                                    <a href="#">
-                                                        <i class="text-success ki-filled ki-shield-tick"></i>
-                                                    </a>
+    <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-start">
 
-                                                    <a class="hover:text-primary cursor-pointer" href="#"
-                                                       data-modal-toggle="#student-modal">
-                                                        <i class="ki-filled ki-cursor"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Joe</td>
-                                            <td>Dohn</td>
-                                            <td>02/12/2000</td>
-                                            <td>
-                                                <div class="flex items-center justify-between">
-                                                    <a href="#">
-                                                        <i class="text-danger ki-filled ki-shield-cross"></i>
-                                                    </a>
-                                                    <a class="hover:text-primary cursor-pointer" href="#"
-                                                       data-modal-toggle="#student-modal">
-                                                        <i class="ki-filled ki-cursor"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium">
-                                <div class="flex items-center gap-2 order-2 md:order-1">
-                                    Show
-                                    <select class="select select-sm w-16" data-datatable-size="true" name="perpage"></select>
-                                    per page
-                                </div>
-                                <div class="flex items-center gap-4 order-1 md:order-2">
-                                    <span data-datatable-info="true"></span>
-                                    <div class="pagination" data-datatable-pagination="true"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- List of students -->
+        <div class="lg:col-span-2">
+            <div class="card h-full min-w-full">
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold mb-4">Liste des étudiants</h2>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                        <tr class="border-b">
+                            <th class="py-2">Promotion</th>
+                            <th class="py-2">Nom</th>
+                            <th class="py-2">Date de naissance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($students as $student)
+                            <tr class="border-b">
+                                <td class="py-2">
+                                    {{ $student->student }}<br>
+                                    <small class="text-gray-500">{{ $student->first_name }} - {{ $student->last_name  }}</small>
+                                </td>
+                                <td class="py-2">
+                                    {{ $student->birthday }}
+                                </td>
+                                <td class="py-2 flex gap-2">
+                                    <a href="{{ route('student.edit', $student->id) }}"
+                                       class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                                        Modifier
+                                    </a>
+                                    <form action="{{ route('student.delete', $student->id) }}" method="POST" onsubmit="return confirm('Es-tu sûr de vouloir supprimer cette promotion ?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="lg:col-span-1">
-            <div class="card h-full">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Ajouter un étudiant
-                    </h3>
-                </div>
-                <div class="card-body flex flex-col gap-5">
-                    Formulaire à créer
-                    <!-- @todo A compléter -->
+
+                <!-- Form -->
+                <div class="lg:col-span-1">
+                    <div class="card h-full flex flex-col justify-between">
+                        <div>
+                            <div class="card-header p-4">
+                                <h3 class="card-title text-lg font-semibold">Ajouter une promotion</h3>
+                            </div>
+                            <div class="card-body p-4 flex flex-col gap-4">
+                                <form action="{{ route('student.store') }}" method="post" class="flex flex-col gap-4">
+                                    @csrf
+
+                                    <x-forms.input name="school_id" :label="__('School id')" />
+                                    <span class="text-gray-500 text-sm">(Cergy : 1 - Paris : 2)</span>
+
+                                    <x-forms.input name="cohort" :label="__('Promotion')" />
+                                    <span class="text-gray-500 text-sm">(Ex : Cergy B1)</span>
+
+                                    <x-forms.input name="first_name" :label="__('Prenom')" />
+                                    <x-forms.input name="last_name" :label="__('Nom')" />
+
+                                    <x-forms.input type="date" name="birthday" :label="__('Date de naissance')" />
+
+                                    <x-forms.primary-button>
+                                        {{ __('Valider') }}
+                                    </x-forms.primary-button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

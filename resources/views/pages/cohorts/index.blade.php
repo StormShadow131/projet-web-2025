@@ -26,7 +26,7 @@
                         @foreach($cohorts as $cohort)
                             <tr class="border-b">
                                 <td class="py-2">
-                                    {{ $cohort->name }}<br>
+                                    {{ $cohort->cohort }}<br>
                                     <small class="text-gray-500">{{ $cohort->description }}</small>
                                 </td>
                                 <td class="py-2">
@@ -67,7 +67,7 @@
                             <x-forms.input name="school_id" :label="__('School id')" />
                             <span class="text-gray-500 text-sm">(Cergy : 1 - Paris : 2)</span>
 
-                            <x-forms.input name="name" :label="__('Nom')" />
+                            <x-forms.input name="cohort" :label="__('Promotion')" />
                             <span class="text-gray-500 text-sm">(Ex : Cergy B1)</span>
 
                             <x-forms.input name="description" :label="__('Description')" />
@@ -82,7 +82,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- end: grid -->
 </x-app-layout>

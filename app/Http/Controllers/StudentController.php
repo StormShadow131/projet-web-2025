@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller

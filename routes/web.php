@@ -38,6 +38,12 @@ Route::middleware('auth')->group(function () {
 
         // Students
         Route::get('students', [StudentController::class, 'index'])->name('student.index');
+        Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
+        Route::get('/students/{student}/edit', [StudentController::class, 'show'])->name('student.edit');
+
+        Route::get('/students/{student}', [StudentController::class, 'update'])->name('student.update');
+        Route::post('/students', [StudentController::class, 'store'])->name('student.store');
+        Route::delete('/students/{student}', [StudentController::class, 'delete'])->name('student.delete');
 
         // Knowledge
         Route::get('knowledge', [KnowledgeController::class, 'index'])->name('knowledge.index');
