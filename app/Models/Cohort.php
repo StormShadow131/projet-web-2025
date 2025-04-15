@@ -10,7 +10,7 @@ class Cohort extends Model
     use HasFactory;
 
     protected $table        = 'cohorts';
-    protected $fillable     = ['school_id', 'name', 'description', 'start_date', 'end_date'];
+    protected $fillable     = ['school_id', 'cohort', 'description', 'start_date', 'end_date'];
 
 
 }

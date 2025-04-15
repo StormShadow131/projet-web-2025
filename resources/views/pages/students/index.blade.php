@@ -20,6 +20,7 @@
                         <tr class="border-b">
                             <th class="py-2">Promotion</th>
                             <th class="py-2">Nom</th>
+                            <th class="py-2">Email</th>
                             <th class="py-2">Date de naissance</th>
                         </tr>
                         </thead>
@@ -28,7 +29,12 @@
                             <tr class="border-b">
                                 <td class="py-2">
                                     {{ $student->student }}<br>
-                                    <small class="text-gray-500">{{ $student->first_name }} - {{ $student->last_name  }}</small>
+                                </td>
+                                <td class="py-2">
+                                    {{ $student->first_name }} {{ $student->last_name  }}
+                                </td>
+                                <td class="py-2">
+                                    {{ $student->email }}
                                 </td>
                                 <td class="py-2">
                                     {{ $student->birthday }}
@@ -73,6 +79,7 @@
 
                                     <x-forms.input name="first_name" :label="__('Prenom')" />
                                     <x-forms.input name="last_name" :label="__('Nom')" />
+                                    <x-forms.input name="email" :label="__('Email')" />
 
                                     <x-forms.input type="date" name="birthday" :label="__('Date de naissance')" />
 

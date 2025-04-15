@@ -41,8 +41,11 @@ class StudentController extends Controller
     {
         // Validate form fields
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'school_id' => 'required|int|max:1',
+            'cohort' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
             'birthday' => 'required|date',
         ]);
 
