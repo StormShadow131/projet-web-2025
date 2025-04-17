@@ -3,12 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cohort;
+use App\Models\Student;
+use App\Models\Teacher;
 
 class DashboardController extends Controller
 {
-    public function index() {
-        $userRole = auth()->user()->school()->pivot->role;
+    public function index()
+    {
+        $totalCohorts = Cohort::count();
+        $totalStudents = Student::count();
+        $totalTeachers = Teacher::count();
 
-        return view('pages.dashboard.dashboard-' . $userRole);
+        // Static nombre
+        $totalGroupes = 5;
+
+        return view('pages.dashboard.dashboard-admin', compact(
+            'totalCohorts',
+            'totalStudents',
+            'totalTeachers',
+            'totalGroupes'
+        ));
     }
 }

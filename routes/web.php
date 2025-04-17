@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('verified')->group(function () {
         // Dashboard
+        Route::middleware(['auth', 'isTeacher'])->group(function () {
+            Route::get('/pages/dashboard-teacher', [DashboardController::class, 'index'])->name('pages.dashboard-teacher');
+        });
+        Route::middleware(['auth', 'isAdmin'])->group(function () {
+            Route::get('/pages/dashboard-admin', [DashboardController::class, 'index'])->name('pages.dashboard-admin');
+        });
+
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // Cohorts
