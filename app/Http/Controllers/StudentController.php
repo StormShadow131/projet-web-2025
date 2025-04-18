@@ -19,7 +19,7 @@ class StudentController extends Controller
         // Get all students from database
         $students = Student::all();
 
-        // Send variable to view
+        // Return the view
         return view('pages.students.index', compact('students'));
 
     }
@@ -30,7 +30,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-
+        // Return the view
         return view('pages.students.show', [
             'student' => $student
         ]);

@@ -13,9 +13,12 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        // Checks if the user has the “admin” role
         if (auth()->user()->role !== 'admin') {
+            // If not admin return, error
             abort(403);
         }
+        // If admin, continue
         return $next($request);
     }
 

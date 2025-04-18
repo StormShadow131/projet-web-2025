@@ -20,6 +20,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        // Return the view
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -30,7 +31,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        // Retrieves user
+        // Get user
         $user = $request->user();
 
         // Validate form fields
@@ -60,9 +61,10 @@ class ProfileController extends Controller
             $user->password = Hash::make($validated['password']);
         }
 
-        // Save the modification in the database
+        // Save the modification
         $user->save();
 
+        // Redirect and print a success message
         return redirect()->route('profile.edit')->with('status', 'Profile updated!');
     }
 
@@ -75,15 +77,22 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
+        // Get the current user
         $user = $request->user();
 
+        // Logout the user
         Auth::logout();
 
+        // Delete user
         $user->delete();
 
+        // Invalidate session
         $request->session()->invalidate();
+
+        // Generate new token
         $request->session()->regenerateToken();
 
+        // Redirect tou home page
         return Redirect::to('/');
     }
 }

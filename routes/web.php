@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 
         Route::middleware(['auth', 'isTeacher'])->group(function () {
             Route::get('/pages/dashboard-teacher', [DashboardController::class, 'index'])->name('pages.dashboard-teacher');
+            Route::get('/pages/dashboard-teacher/overview', [DashboardController::class, 'dashboard'])->name('pages.dashboard-teacher.overview');;
         });
 
         Route::middleware(['auth', 'isStudent'])->group(function () {

@@ -13,9 +13,12 @@ class isStudent
      */
     public function handle(Request $request, Closure $next)
     {
+        // Checks if the user has the “student” role
         if (auth()->user()->role !== 'student') {
+            // If not student, return error
             abort(403);
         }
+        // If student, continue
         return $next($request);
     }
 

@@ -20,7 +20,7 @@ class CohortController extends Controller
         // Get all cohorts from database
         $cohorts = Cohort::all();
 
-        // Send variable to view
+        // Return the view
         return view('pages.cohorts.index', compact('cohorts'));
     }
 
@@ -33,6 +33,7 @@ class CohortController extends Controller
     public function show(Cohort $cohort)
     {
 
+        // Return the view
         return view('pages.cohorts.show', [
             'cohort' => $cohort
         ]);
@@ -77,7 +78,6 @@ class CohortController extends Controller
     // Delete cohort
     public function delete(Cohort $cohort)
     {
-
         $cohort->delete();
 
         // Redirect and print a success message
@@ -86,11 +86,12 @@ class CohortController extends Controller
 
     public function myCohorts()
     {
-        $teacher = Auth::user();  // supposant que l’enseignant est connecté
+        // Get the current user
+        $teacher = Auth::user();
         $cohorts = $teacher->cohorts;
 
+        // Return the view
         return view('pages.cohorts.my-Cohorts', compact('cohorts'));
     }
-
 
 }

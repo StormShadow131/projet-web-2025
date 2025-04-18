@@ -19,7 +19,7 @@ class TeacherController extends Controller
         // Get all teachers from database
         $teachers = Teacher::all();
 
-        // Send variable to view
+        // Return the view
         return view('pages.teachers.index', compact('teachers'));
 
     }
@@ -30,7 +30,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-
+        // Return the view
         return view('pages.teachers.show', [
             'teacher' => $teacher
         ]);
