@@ -98,3 +98,33 @@ npm run dev
 - 🧠 Génération automatique de QCM par langage sélectionné
 - ✅ Système de Kanban pour les rétrospectives
 - 📈 Statistiques d’usage et suivi pédagogique
+
+---
+
+## 📚 Story 
+
+### 📕 Story 1
+
+✅ Tout fait et fonctionnelle.
+
+### 📙 Story 2
+
+✅ Tout fait et fonctionnelle 
+❌ mais problème au niveau des roles : ça affiche la vue 'admin' au lieu de 'teacher' dans le dashboard.
+
+### 📗 Story 3
+
+✅ Fait et fonctionnelle ❌ sauf les mails.
+
+### 📘 Story 4
+
+✅ Tout fait et fonctionnelle.
+
+### 📕 Story 5
+
+✅ Tout fait et fonctionnelle.
+
+### 📙 Story 6
+
+✅ Tout fait, 
+❌ mais ne fonctionne pas : le code est écrit mais cela ne fonctionne pas. 
