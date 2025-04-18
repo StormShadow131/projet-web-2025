@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CohortController extends Controller
 {
@@ -82,5 +83,14 @@ class CohortController extends Controller
         // Redirect and print a success message
         return redirect()->route('dashboard')->with('success', 'Promotion supprimée avec succès !');
     }
+
+    public function myCohorts()
+    {
+        $teacher = Auth::user();  // supposant que l’enseignant est connecté
+        $cohorts = $teacher->cohorts;
+
+        return view('pages.cohorts.my-Cohorts', compact('cohorts'));
+    }
+
 
 }

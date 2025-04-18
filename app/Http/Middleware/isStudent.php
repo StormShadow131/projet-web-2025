@@ -6,16 +6,17 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isTeacher
+class isStudent
 {
     /**
      * Handle an incoming request.
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role !== 'teacher') {
+        if (auth()->user()->role !== 'student') {
             abort(403);
         }
         return $next($request);
     }
+
 }

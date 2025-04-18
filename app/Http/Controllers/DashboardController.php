@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cohort;
 use App\Models\Student;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -25,4 +26,15 @@ class DashboardController extends Controller
             'totalGroupes'
         ));
     }
+
+    public function dashboard()
+    {
+        $teacher = Auth::user();
+        $currentYear = now()->year;
+
+        $cohorts = $teacher->cohorts()->where('year', $currentYear)->get();
+
+        return view('pages.dashboard.dashboard-teacher', compact('cohorts'));
+    }
+
 }

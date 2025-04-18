@@ -12,5 +12,10 @@ class Cohort extends Model
     protected $table        = 'cohorts';
     protected $fillable     = ['school_id', 'cohort', 'description', 'start_date', 'end_date'];
 
+    public function teachers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Teacher::class, 'cohort_teacher');
+    }
+
 
 }

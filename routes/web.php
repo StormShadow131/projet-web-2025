@@ -21,12 +21,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware('verified')->group(function () {
+
         // Dashboard
+        Route::middleware(['auth', 'isAdmin'])->group(function () {
+            Route::get('/pages/dashboard-admin', [DashboardController::class, 'index'])->name('pages.dashboard-admin');
+        });
+
         Route::middleware(['auth', 'isTeacher'])->group(function () {
             Route::get('/pages/dashboard-teacher', [DashboardController::class, 'index'])->name('pages.dashboard-teacher');
         });
-        Route::middleware(['auth', 'isAdmin'])->group(function () {
-            Route::get('/pages/dashboard-admin', [DashboardController::class, 'index'])->name('pages.dashboard-admin');
+
+        Route::middleware(['auth', 'isStudent'])->group(function () {
+            Route::get('/pages/dashboard-student', [DashboardController::class, 'index'])->name('pages.dashboard-student');
         });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
