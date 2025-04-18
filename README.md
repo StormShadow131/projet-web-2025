@@ -114,7 +114,8 @@ npm run dev
 
 ### 📗 Story 3
 
-✅ Fait et fonctionnelle ❌ sauf les mails.
+✅ Fait et fonctionnelle 
+❌ sauf le bouton modifier qui ne fonctionne pas et le mail qu'y n'est pas fait.
 
 ### 📘 Story 4
 
