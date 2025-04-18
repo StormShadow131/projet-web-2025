@@ -129,3 +129,6 @@ npm run dev
 
 ✅ Tout fait, 
 ❌ mais ne fonctionne pas : le code est écrit mais cela ne fonctionne pas. 
+
+Ayant eu des problèmes avec Git la premiere semaine, j'ai donc dû reclone mon projet et sur ce premier repository, j'avais 6 ou 7 commit.
+Donc avec ceux de maintenant, j'ai environ 20 commit.
